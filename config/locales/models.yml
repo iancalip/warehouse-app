@@ -11,3 +11,4 @@ pt-BR:
         address: "Endereço"
         cep: "CEP"
         description: "Descrição"
+        state: "Estado"

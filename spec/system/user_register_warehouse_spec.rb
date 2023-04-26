@@ -11,6 +11,7 @@ describe 'Usuŕario cadastra um galpão' do
         expect(page).to have_field('Nome')
         expect(page).to have_field('Código')
         expect(page).to have_field('Cidade')
+        expect(page).to have_field('Estado')
         expect(page).to have_field('Área')
         expect(page).to have_field('Endereço')
         expect(page).to have_field('CEP')
@@ -22,13 +23,14 @@ describe 'Usuŕario cadastra um galpão' do
         #Act
         visit root_path
         click_on 'Cadastrar Galpão'
-        fill_in "Nome",	with: "Rio de Janeiro"
-        fill_in "Código", with: "RIO"
-        fill_in "Cidade", with: "Rio de Janeiro"
-        fill_in "Área", with: "32000"
-        fill_in "Endereço", with: "Avenida Museu do Amanhã, 1000"
-        fill_in "CEP", with: "20100-000"
-        fill_in "Descrição", with: "Galpão da zona portuária do Rio"
+        fill_in 'Nome',	with: 'Rio de Janeiro'
+        fill_in 'Código', with: 'RIO'
+        fill_in 'Cidade', with: 'Rio de Janeiro'
+        fill_in 'Estado', with: 'RJ'
+        fill_in 'Área', with: '32000'
+        fill_in 'Endereço', with: 'Avenida Museu do Amanhã, 1000'
+        fill_in 'CEP', with: '20100-000'
+        fill_in 'Descrição', with: 'Galpão da zona portuária do Rio'
         click_on 'Enviar'
         #Assert
         expect(current_path).to eq root_path
@@ -46,6 +48,7 @@ describe 'Usuŕario cadastra um galpão' do
         fill_in 'Nome', with: ''
         fill_in 'Código', with: ''
         fill_in 'Cidade', with: ''
+        fill_in 'Estado', with: ''
         fill_in 'Área', with: ''
         fill_in 'Endereço', with: ''
         fill_in 'CEP', with: ''

@@ -1,5 +1,6 @@
 class Warehouse < ApplicationRecord
-    validates :name, :code, :city, :area, :address, :cep, :description, presence: true
-    validates :code, length: { is: 3}
-    validates :code, uniqueness: true
+    validates :name, :code, :city, :state, :area, :address, :cep, :description, presence: true
+    validates :code, length: { is: 3 }
+    validates :state, length: { is: 2 }
+    validates :name, :code, uniqueness: true
 end

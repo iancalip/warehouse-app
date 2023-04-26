@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'usuario ve detalhe de um galpao' do
     it 'e ve informações adicionais' do
        #Arrange
-       Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
+       Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP', area: 100_000,
                         address: 'Avenida aeroporto, 1000', cep: '15000-000',
                         description: 'Galpão para cargas internacionais')
        #Act
@@ -13,6 +13,7 @@ describe 'usuario ve detalhe de um galpao' do
        expect(page).to have_content('Galpão: GRU')
        expect(page).to have_content('Nome: Aeroporto SP')
        expect(page).to have_content('Cidade: Guarulhos')
+       expect(page).to have_content('Estado: SP')
        expect(page).to have_content('Área: 100000')
        expect(page).to have_content('Endereço: Avenida aeroporto, 1000 CEP: 15000-000')
        expect(page).to have_content('Descrição: Galpão para cargas internacionais')
@@ -20,7 +21,7 @@ describe 'usuario ve detalhe de um galpao' do
 
     it 'e volta para tela inicial' do
         #Arrange
-        Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
+        Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP', area: 100_000,
             address: 'Avenida aeroporto, 1000', cep: '15000-000',
             description: 'Galpão para cargas internacionais')
 
