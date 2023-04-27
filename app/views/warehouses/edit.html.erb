@@ -1,7 +1,6 @@
-<h3>Editar Galpão</h3>
-<%= link_to 'Home', root_path%>
-<%= button_to 'Remover', warehouse_path(@warehouse), method: :delete %>
 <hr>
+<h3>Editar Galpão</h3>
+<%= button_to 'Remover', warehouse_path(@warehouse), method: :delete %>
 
 <body>
   <%= render partial: 'form', locals: { warehouse: @warehouse }%>

@@ -77,7 +77,14 @@ RSpec.describe Warehouse, type: :model do
             #Assert
             expect(second_warehouse).not_to be_valid
         end
+
+        it 'false when code is not 3 characters long' do
+            #Arrange
+            warehouse = Warehouse.create(name: 'Rio de Janeiro', code: 'RIOS', city: 'Rio', area: 1000,
+                                    address: 'Endereço', cep: '25000-000', description: 'descrição')
+            #Act
+            #Assert
+            expect(warehouse).not_to be_valid
+        end
     end
-
-
 end

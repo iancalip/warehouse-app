@@ -1,0 +1,7 @@
+<hr>
+<h3>Editar Fornecedor</h3>
+<%= button_to 'Remover', supplier_path(@supplier), method: :delete %>
+
+<body>
+  <%= render partial: 'form', locals: { supplier: @supplier }%>
+</body>

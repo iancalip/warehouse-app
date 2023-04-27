@@ -63,14 +63,14 @@ describe 'Usuário edita um galpão' do
         visit root_path
         click_on 'Rio'
         click_on 'Editar'
-        fill_in 'Nome', with: ''
-        fill_in 'Código', with: ''
-        fill_in 'Cidade', with: ''
-        fill_in 'Estado', with: ''
-        fill_in 'Área', with: ''
-        fill_in 'Endereço', with: ''
-        fill_in 'CEP', with: ''
-        fill_in 'Descrição', with: ''
+        fill_in('Nome', with: '')
+        fill_in('Código', with: '')
+        fill_in('Cidade', with: '')
+        fill_in('Estado', with: '')
+        fill_in('Área', with: '')
+        fill_in('Endereço', with: '')
+        fill_in('CEP', with: '')
+        fill_in('Descrição', with: '')
         click_on 'Enviar'
 
         #Assert

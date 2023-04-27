@@ -1,0 +1,12 @@
+<hr>
+<h3> Fornecedor: <%= @supplier.brand_name %> </h3>
+<%= link_to 'Editar', edit_supplier_path(@supplier)%>
+<div>
+<strong>Razão social:</strong> <%= @supplier.corporate_name%><br>
+<strong>Endereço:</strong> <%= @supplier.address%><br>
+<strong>Cidade:</strong> <%= @supplier.city %>
+<strong>UF:</strong> <%= @supplier.state %><br>
+<strong>E-mail: </strong><%= @supplier.email %>
+<strong>Telefone: </strong><%= @supplier.telephone%><br>
+<strong>CNPJ: </strong><%= @supplier.registration_number %><br>
+</div>
