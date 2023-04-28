@@ -1,0 +1,10 @@
+<h3> Modelo de produto: <%= @product_model.name %> </h3>
+<%= link_to 'Editar', edit_product_model_path(@product_model)%>
+<div>
+<strong>Peso:</strong> <%= @product_model.weight%><br>
+<strong>Largura:</strong> <%= @product_model.width%><br>
+<strong>Altura:</strong> <%= @product_model.height %>
+<strong>Profundidade:</strong> <%= @product_model.depth %><br>
+<strong>Código de identificação: </strong><%= @product_model.sku %><br>
+<strong>Fornecedor: </strong><%= @product_model.supplier.brand_name%><br>
+</div>

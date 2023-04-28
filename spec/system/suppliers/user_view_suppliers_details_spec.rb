@@ -7,7 +7,9 @@ describe 'Usuário vê detalhes de um fornecedor' do
                         city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
        #Act
        visit root_path
-       click_on 'Fornecedores'
+       within('nav') do
+            click_on 'Fornecedores'
+        end
        click_on 'LG'
        #Assert
        expect(page).to have_content('Fornecedor: LG')
