@@ -15,10 +15,8 @@ describe 'Usuário edita um modelo de produto' do
 
         #Assert
         expect(page).to have_field('Nome', with: 'TV 32')
-        expect(page).to have_field('Peso', with: '8000')
-        expect(page).to have_field('Largura', with: '70')
-        expect(page).to have_field('Altura', with: '45')
-        expect(page).to have_field('Profundidade', with: '10')
+        expect(page).to have_field('Peso', with: '8000g')
+        expect(page).to have_field('Dimensão', with: '45cm x 70cm x 10cm')
         expect(page).to have_field('Código de identificação', with: 'TV32-SAMSU-XPTO90000')
         expect(page).to have_field('Fornecedor', with: supplier.id)
         expect(page).to have_content('Editar Modelo de produto')
@@ -49,10 +47,8 @@ describe 'Usuário edita um modelo de produto' do
 
         #Assert
         expect(page).to have_content('TV 33')
-        expect(page).to have_content('9000')
-        expect(page).to have_content('80')
-        expect(page).to have_content('50')
-        expect(page).to have_content('15')
+        expect(page).to have_content('9000g')
+        expect(page).to have_content('50cm x 80cm x 15cm')
         expect(page).to have_content('TV33-LGXSU-XPTO91111')
         expect(page).to have_content('LG')
     end
