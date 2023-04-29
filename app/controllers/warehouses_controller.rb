@@ -3,7 +3,9 @@ class WarehousesController < ApplicationController
 
     def show; end
 
-    def new; @warehouse = Warehouse.new; end
+    def new
+        @warehouse = Warehouse.new
+    end
 
     def create
         @warehouse = Warehouse.new(warehouse_params)

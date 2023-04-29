@@ -7,7 +7,9 @@ class SuppliersController < ApplicationController
 
     def show; end
 
-    def new; @supplier = Supplier.new; end
+    def new
+        @supplier = Supplier.new
+    end
 
     def create
         @supplier = Supplier.new(supplier_params)

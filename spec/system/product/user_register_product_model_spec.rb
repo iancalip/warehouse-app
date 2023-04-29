@@ -74,6 +74,26 @@ describe 'Usuŕario cadastra um modelo de produto' do
         expect(page).to have_content('Código de identificação não possui o tamanho esperado (20 caracteres)')
     end
 
+    it 'com 0 nas dimensões' do
+        #Arrange
+        #Act
+        visit root_path
+        click_on 'Modelos de Produtos'
+        click_on 'Cadastrar modelo de produto'
+
+        fill_in('Peso', with: 0)
+        fill_in('Largura', with: 0)
+        fill_in('Altura', with: 0)
+        fill_in('Profundidade', with: 0)
+        click_on 'Enviar'
+
+        #Assert
+        expect(page).to have_content('Peso deve ser maior que 0')
+        expect(page).to have_content('Largura deve ser maior que 0')
+        expect(page).to have_content('Altura deve ser maior que 0')
+        expect(page).to have_content('Profundidade deve ser maior que 0')
+    end
+
     it 'com números menores que 0' do
         #Arrange
         #Act
@@ -81,10 +101,10 @@ describe 'Usuŕario cadastra um modelo de produto' do
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
 
-        fill_in('Peso', with: '-9')
-        fill_in('Largura', with: '-9')
-        fill_in('Altura', with: '-1')
-        fill_in('Profundidade', with: '-2')
+        fill_in('Peso', with: -9)
+        fill_in('Largura', with: -9)
+        fill_in('Altura', with: -1)
+        fill_in('Profundidade', with: -2)
         click_on 'Enviar'
 
         #Assert

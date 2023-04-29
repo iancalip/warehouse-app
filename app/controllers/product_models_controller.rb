@@ -7,7 +7,9 @@ class ProductModelsController < ApplicationController
 
     def show; end
 
-    def new; @product_model = ProductModel.new; end
+    def new
+        @product_model = ProductModel.new
+    end
 
     def create
         @product_model = ProductModel.new(product_model_params)
