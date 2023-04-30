@@ -3,11 +3,13 @@ require 'rails_helper'
 describe 'Usuário edita um modelo de produto' do
     it 'a partir da tela inicial' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
                                             sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'TV 32'
@@ -26,6 +28,7 @@ describe 'Usuário edita um modelo de produto' do
 
     it 'com sucesso' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         second_supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
@@ -33,6 +36,7 @@ describe 'Usuário edita um modelo de produto' do
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
                                             sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'TV 32'
@@ -57,12 +61,14 @@ describe 'Usuário edita um modelo de produto' do
 
     it 'sem sucesso' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
                                             sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
 
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'TV 32'

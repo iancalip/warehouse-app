@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'Usuŕario cadastra um modelo de produto' do
     it 'a partir da tela inicial' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
@@ -21,9 +23,11 @@ describe 'Usuŕario cadastra um modelo de produto' do
 
     it 'com sucesso' do
         #Arrage
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                         city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
@@ -47,7 +51,9 @@ describe 'Usuŕario cadastra um modelo de produto' do
 
     it 'com dados incompletos' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
@@ -76,7 +82,9 @@ describe 'Usuŕario cadastra um modelo de produto' do
 
     it 'com 0 nas dimensões' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
@@ -96,7 +104,9 @@ describe 'Usuŕario cadastra um modelo de produto' do
 
     it 'com números menores que 0' do
         #Arrange
+        user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
         #Act
+        login_as(user)
         visit root_path
         click_on 'Modelos de Produtos'
         click_on 'Cadastrar modelo de produto'
