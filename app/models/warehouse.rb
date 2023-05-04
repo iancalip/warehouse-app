@@ -3,4 +3,8 @@ class Warehouse < ApplicationRecord
     validates :code, length: { is: 3 }
     validates :state, length: { is: 2 }
     validates :name, :code, uniqueness: true
+
+    def full_description
+        "#{code} | #{name}"
+    end
 end

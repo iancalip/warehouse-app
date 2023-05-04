@@ -60,4 +60,14 @@ RSpec.describe Supplier, type: :model do
     end
 
   end
+
+  describe '#full_description' do
+    it "description" do
+         #Arrange
+         supplier = Supplier.new(corporate_name: 'LG Electronics Inc', registration_number: '1234567890000')
+         #Act
+         #Assert
+         expect(supplier.full_description).to eq('LG Electronics Inc | 1234567890000')
+     end
+ end
 end
