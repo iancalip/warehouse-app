@@ -29,6 +29,9 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      adm:
+        one: Admnistrador(a)
+        other: Admnistadores
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
