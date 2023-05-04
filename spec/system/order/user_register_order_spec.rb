@@ -24,6 +24,8 @@ describe 'Usuário cadastra um pedido'do
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                     city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
+
+        allow(SecureRandom).to receive(:alphanumeric).and_return('ABC12345')
         #Act
         visit root_path
         login_as(user)
@@ -34,6 +36,7 @@ describe 'Usuário cadastra um pedido'do
         click_on 'Gravar'
 
         #Assert
+        expect(page).to have_content 'Pedido ABC12345'
         expect(page).to have_content 'Pedido registrado com sucesso'
         expect(page).to have_content 'Galpão Destino: GRU | Aeroporto SP'
         expect(page).to have_content 'Fornecedor: LG Electronics Inc | 1234567890000'
