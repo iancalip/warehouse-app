@@ -19,9 +19,12 @@ describe 'Usuário vê seus próprios pedidos' do
                                     description: 'Galpão para cargas internacionais')
         supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                     city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
-        order_1 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now)
-        order_2 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now)
-        order_3 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 4.day.from_now)
+        order_1 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier,
+                                estimated_delivery_date: 1.day.from_now, status: 'pending')
+        order_2 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier,
+                                estimated_delivery_date: 1.day.from_now, status: 'delivered')
+        order_3 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier,
+                                estimated_delivery_date: 4.day.from_now, status: 'canceled')
         #Act
         login_as(user_1)
         visit root_path
@@ -29,8 +32,11 @@ describe 'Usuário vê seus próprios pedidos' do
 
         #Assert
         expect(page).to have_content order_1.code
+        expect(page).to have_content 'Pendente'
         expect(page).not_to have_content order_2.code
+        expect(page).not_to have_content 'Entregue'
         expect(page).to have_content order_3.code
+        expect(page).to have_content 'Cancelado'
     end
 
     it 'e visita um pedido' do

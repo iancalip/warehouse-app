@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :set_order, :check_user, only: [:show, :edit, :update]
+    before_action :set_order, :check_user, only: [:show, :edit, :update, :delivered, :canceled]
     before_action :authenticate_user!
 
     def index
@@ -42,6 +42,16 @@ class OrdersController < ApplicationController
             flash.now[:notice] = 'Pedido não atualizado.'
             render :new
         end
+    end
+
+    def delivered
+        @order.delivered!
+        redirect_to @order
+    end
+
+    def canceled
+        @order.canceled!
+        redirect_to @order
     end
 
     private

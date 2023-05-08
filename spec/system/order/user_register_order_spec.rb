@@ -37,6 +37,7 @@ describe 'Usuário cadastra um pedido'do
 
         #Assert
         expect(page).to have_content 'Pedido ABC12345'
+        expect(page).to have_content 'Situação do Pedido: Pendente'
         expect(page).to have_content 'Pedido registrado com sucesso'
         expect(page).to have_content 'Galpão Destino: GRU | Aeroporto SP'
         expect(page).to have_content 'Fornecedor: LG Electronics Inc | 1234567890000'

@@ -1,3 +1,6 @@
+<div>
     <strong><%= Order.human_attribute_name(:code) %>:</strong> <%= link_to order.code, order %><br/>
     <strong><%= Order.human_attribute_name(:warehouse_id) %>:</strong> <%= order.warehouse.full_description %><br/>
     <strong><%= Order.human_attribute_name(:supplier_id) %>:</strong> <%= order.supplier.corporate_name %><br/>
+    <strong><%= Order.human_attribute_name(:status) %>:</strong> <%= t(order.status) %><br/>
+</div>
