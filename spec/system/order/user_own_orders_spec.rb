@@ -80,4 +80,35 @@ describe 'Usuário vê seus próprios pedidos' do
         expect(current_path).to eq root_path
         expect(page).to have_content 'Você não possui acesso a esse pedido.'
     end
+
+    it 'e vê itens do pedido' do
+        #Arrange
+        user = User.create!(name: 'User', email: 'user@email.com', password: 'password')
+        supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
+                                    city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
+        product_a = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
+                                        sku: 'TV32-LGTVX-XPTO90000', supplier: supplier)
+        product_b = ProductModel.create!(name: 'SoundBar 7.1', weight: '3000', width: '80', height: '15', depth: '20',
+                                        sku: 'SOU71-LGSBR-NOIZ7700', supplier: supplier)
+        product_c = ProductModel.create!(name: 'Celular', weight: '400', width: '80', height: '15', depth: '20',
+                                        sku: 'CELUL-LGCEL-NOIZ7700', supplier: supplier)
+        warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP', area: 100_000,
+                                    address: 'Avenida aeroporto, 1000', cep: '15000-000',
+                                    description: 'Galpão para cargas internacionais')
+        order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
+                            estimated_delivery_date: 1.day.from_now)
+        OrderItem.create!(product_model: product_a, order: order, quantity: 20)
+        OrderItem.create!(product_model: product_b, order: order, quantity: 15)
+        #Act
+        login_as(user)
+        visit root_path
+        click_on 'Meus Pedidos'
+        click_on order.code
+
+        #Assert
+        expect(page).to have_content 'Itens do Pedido'
+        expect(page).to have_content '20 x TV 32'
+        expect(page).to have_content '15 x SoundBar 7.1'
+    end
+
 end
