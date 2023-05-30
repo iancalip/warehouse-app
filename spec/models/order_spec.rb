@@ -88,5 +88,19 @@ RSpec.describe Order, type: :model do
             expect(order).not_to be_valid
             expect(order.errors[:estimated_delivery_date]).to include('deve ser futura.')
         end
+
+        it 'e não deve ser modificado' do
+            warehouse = Warehouse.create!(name: 'Rio de Janeiro', code: 'RIO', city: 'Rio', state: 'RJ', area: 1000,
+                                            address: 'Endereço', cep: '25000-000', description: 'descrição')
+            user = User.create!(name: 'Ian', email: 'ian@email.com', password: 'password')
+            supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
+                            city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
+            order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+            original_code = order.code
+            #ACT
+            order.update!(estimated_delivery_date: 1.week.from_now)
+            #Assert
+            expect(order.code).to eq(original_code)
+        end
     end
 end
