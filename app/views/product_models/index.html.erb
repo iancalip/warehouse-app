@@ -6,7 +6,7 @@
         <thead>
             <tr>
             <th>Nome</th>
-            <th>SKU</th>
+            <th>Identificador</th>
             <th>Fornecedor</th>
             </tr>
         </thead>
@@ -14,7 +14,7 @@
             <% @product_models.each do |pm| %>
             <tr>
                 <td><%= link_to pm.name, pm %></td>
-                <td><%= pm.sku %></td>
+                <td><%= pm.identifier %></td>
                 <td><%= pm.supplier.brand_name %></td>
             </tr>
             <% end %>

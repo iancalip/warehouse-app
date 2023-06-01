@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_150101) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_004330) do
   create_table "order_items", force: :cascade do |t|
     t.integer "product_model_id", null: false
     t.integer "quantity"
@@ -41,10 +41,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_150101) do
     t.integer "width"
     t.integer "height"
     t.integer "depth"
-    t.string "sku"
+    t.string "identifier"
     t.integer "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "category"
+    t.string "image"
     t.index ["supplier_id"], name: "index_product_models_on_supplier_id"
   end
 

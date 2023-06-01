@@ -28,8 +28,16 @@
         <%= f.number_field :depth %>
     </div>
     <div>
-        <%= f.label :sku %>
-        <%= f.text_field :sku %>
+        <%= f.label :category %>
+        <%= f.text_field :category %>
+    </div>
+    <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+    <div>
+        <%= f.label :image %>
+        <%= f.file_field :image, id: 'image', class: 'form-control-file' %>
     </div>
     <div>
         <%= f.label :supplier_id %>

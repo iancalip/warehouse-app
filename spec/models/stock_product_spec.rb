@@ -9,7 +9,8 @@ RSpec.describe StockProduct, type: :model do
       supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                   city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: :delivered)
-      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80, sku: 'CGAMER-XPTO-88888888')
+      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80,
+                                      category: 'categoria', description: 'descrição')
       #Act
       stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
       #Assert
@@ -26,7 +27,8 @@ RSpec.describe StockProduct, type: :model do
       supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                   city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: :delivered)
-      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80, sku: 'CGAMER-XPTO-88888888')
+      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80,
+                                      category: 'categoria', description: 'descrição')
       stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
       original_serial_number = stock_product.serial_number
       #act
@@ -45,7 +47,8 @@ RSpec.describe StockProduct, type: :model do
       supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                   city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: :delivered)
-      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80, sku: 'CGAMER-XPTO-88888888')
+      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80,
+                                      category: 'categoria', description: 'descrição')
 
       #Act
       stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
@@ -61,7 +64,8 @@ RSpec.describe StockProduct, type: :model do
       supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                   city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
       order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: :delivered)
-      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80, sku: 'CGAMER-XPTO-88888888')
+      product = ProductModel.create!(name: 'Cadeira Gamer', supplier: supplier, weight: 5, height: 70, width: 75, depth: 80,
+                                      category: 'categoria', description: 'descrição')
 
       #Act
       stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)

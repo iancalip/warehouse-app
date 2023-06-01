@@ -6,7 +6,7 @@ describe 'Usuario visita tela incial' do
         #Act
         visit root_path
         #Assert
-        expect(page).to have_content('Galpões & Estoque')
+        expect(page).to have_content('GalpON')
         expect(page).to have_link('Home')
     end
 

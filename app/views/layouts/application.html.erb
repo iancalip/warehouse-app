@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <h1> Galpões & Estoque </h1>
+      <h1> GalpON </h1>
       <nav>
         <%= link_to 'Home', root_path %> |
         <%= link_to 'Fornecedores', suppliers_path %> |
@@ -33,11 +33,16 @@
         <hr>
       </nav>
     </header>
-    <main>
-      <div>
-        <%= alert %>
-        <%= notice %>
-      </div>
+    <main class='m-4'>
+      <% if alert.present? %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% elsif notice.present? %>
+        <div class="alert alert-primary">
+          <%= notice %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

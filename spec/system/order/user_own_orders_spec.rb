@@ -87,11 +87,11 @@ describe 'Usuário vê seus próprios pedidos' do
         supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                     city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
         product_a = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
-                                        sku: 'TV32-LGTVX-XPTO90000', supplier: supplier)
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         product_b = ProductModel.create!(name: 'SoundBar 7.1', weight: '3000', width: '80', height: '15', depth: '20',
-                                        sku: 'SOU71-LGSBR-NOIZ7700', supplier: supplier)
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         product_c = ProductModel.create!(name: 'Celular', weight: '400', width: '80', height: '15', depth: '20',
-                                        sku: 'CELUL-LGCEL-NOIZ7700', supplier: supplier)
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', state: 'SP', area: 100_000,
                                     address: 'Avenida aeroporto, 1000', cep: '15000-000',
                                     description: 'Galpão para cargas internacionais')

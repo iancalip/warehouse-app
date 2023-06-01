@@ -9,7 +9,8 @@ describe 'Usuário informa novo status de pedido' do
                                     description: 'Galpão para cargas internacionais')
         supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                     city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
-        product = ProductModel.create!(supplier: supplier, name:'Cadeira Gamer', weight: 5, height: 100, width: 70, depth: 75, sku:'CAD-GAMER-1234567890')
+        product = ProductModel.create!(name:'Cadeira Gamer', weight: 5, height: 100, width: 70,
+                                        depth: 75, category: 'categoria', description: 'descrição', supplier: supplier)
         order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                             estimated_delivery_date: 1.day.from_now, status: :pending)
         OrderItem.create!(order: order, product_model: product, quantity: 5)
@@ -37,7 +38,8 @@ describe 'Usuário informa novo status de pedido' do
                                     description: 'Galpão para cargas internacionais')
         supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                     city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
-        product = ProductModel.create!(supplier: supplier, name:'Cadeira Gamer', weight: 5, height: 100, width: 70, depth: 75, sku:'CAD-GAMER-1234567890')
+        product = ProductModel.create!(name:'Cadeira Gamer', weight: 5, height: 100, width: 70, depth: 75,
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                             estimated_delivery_date: 1.day.from_now, status: :pending)
         OrderItem.create!(order: order, product_model: product, quantity: 5)

@@ -7,7 +7,7 @@ describe 'Usuário visita página de fornecedores' do
         visit root_path
         click_on 'Fornecedores'
         #Assert
-        expect(page).to have_content('Galpões & Estoque')
+        expect(page).to have_content('GalpON')
         expect(page).to have_content('Fornecedores')
         expect(current_path).to eq suppliers_path
     end

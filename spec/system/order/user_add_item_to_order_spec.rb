@@ -13,9 +13,9 @@ describe 'Usuário adiciona itens ao pedido' do
         order = Order.create!(user: user, warehouse: warehouse, supplier: supplier,
                             estimated_delivery_date: 1.day.from_now)
         product_a = ProductModel.create!(name: 'Produto A', weight: '8000', width: '70', height: '45', depth: '10',
-                                sku: 'PRODUTO-A/1234567890', supplier: supplier)
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         product_b = ProductModel.create!(name: 'Produto B', weight: '3000', width: '80', height: '15', depth: '20',
-                                sku: 'PRODUTO-B/1234567890', supplier: supplier)
+                                        category: 'categoria', description: 'descrição', supplier: supplier)
         #Act
         login_as(user)
         visit root_path
@@ -48,9 +48,9 @@ describe 'Usuário adiciona itens ao pedido' do
         order = Order.create!(user: user, warehouse: warehouse, supplier: supplier_a,
                             estimated_delivery_date: 1.day.from_now)
         product_a = ProductModel.create!(name: 'Produto A', weight: '8000', width: '70', height: '45', depth: '10',
-                                sku: 'PRODUTO-A/1234567890', supplier: supplier_a)
+                                category: 'categoria', description: 'descrição', supplier: supplier_a)
         product_b = ProductModel.create!(name: 'Produto B', weight: '3000', width: '80', height: '15', depth: '20',
-                                sku: 'PRODUTO-B/1234567890', supplier: supplier_b)
+                                category: 'categoria', description: 'descrição', supplier: supplier_b)
         #Act
         login_as(user)
         visit root_path

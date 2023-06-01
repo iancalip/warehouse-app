@@ -7,7 +7,7 @@ describe 'Usuário edita um modelo de produto' do
         supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
-                                            sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
+                                            category: 'categoria', description: 'descrição', supplier: supplier)
         #Act
         login_as(user)
         visit root_path
@@ -21,7 +21,6 @@ describe 'Usuário edita um modelo de produto' do
         expect(page).to have_field('Largura', with: '70')
         expect(page).to have_field('Altura', with: '45')
         expect(page).to have_field('Profundidade', with: '10')
-        expect(page).to have_field('Código de identificação', with: 'TV32-SAMSU-XPTO90000')
         expect(page).to have_field('Fornecedor', with: supplier.id)
         expect(page).to have_content('Editar Modelo de produto')
     end
@@ -34,7 +33,7 @@ describe 'Usuário edita um modelo de produto' do
         second_supplier = Supplier.create!(corporate_name: 'LG Electronics Inc', brand_name: 'LG', registration_number: '1234567890000',
                                             city: 'Rio de Janeiro', state: 'RJ', address: 'Endereço', email: 'contato@lg.com.br', telephone: '1199999-9999')
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
-                                            sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
+                                            category: 'categoria', description: 'descrição', supplier: supplier)
         #Act
         login_as(user)
         visit root_path
@@ -47,7 +46,8 @@ describe 'Usuário edita um modelo de produto' do
         fill_in('Largura', with: '80')
         fill_in('Altura', with: '50')
         fill_in('Profundidade', with: '15')
-        fill_in('Código de identificação', with: 'TV33-LGXSU-XPTO91111')
+        fill_in('Categoria', with: 'Eletrônicos')
+        fill_in('Descrição', with: 'TV grande')
         select 'LG', from: 'Fornecedor'
         click_on 'Enviar'
 
@@ -55,7 +55,9 @@ describe 'Usuário edita um modelo de produto' do
         expect(page).to have_content('TV 33')
         expect(page).to have_content('9000g')
         expect(page).to have_content('50cm x 80cm x 15cm')
-        expect(page).to have_content('TV33-LGXSU-XPTO91111')
+        expect(page).to have_content("#{product_model.identifier}")
+        expect(page).to have_content('TV grande')
+        expect(page).to have_content('Eletrônicos')
         expect(page).to have_content('LG')
     end
 
@@ -65,7 +67,7 @@ describe 'Usuário edita um modelo de produto' do
         supplier = Supplier.create!(corporate_name: 'Samsung Electronics Inc', brand_name: 'Samsung', registration_number: '1234567891111',
                                     city: 'São Paulo', state: 'SP', address: 'Endereço', email: 'contato@samsung.com.br', telephone: '1188888-8888')
         product_model = ProductModel.create!(name: 'TV 32', weight: '8000', width: '70', height: '45', depth: '10',
-                                            sku: 'TV32-SAMSU-XPTO90000', supplier: supplier)
+                                            category: 'categoria', description: 'descrição', supplier: supplier)
 
         #Act
         login_as(user)
@@ -79,7 +81,8 @@ describe 'Usuário edita um modelo de produto' do
         fill_in('Largura', with: '')
         fill_in('Altura', with: '')
         fill_in('Profundidade', with: '')
-        fill_in('Código de identificação', with: '')
+        fill_in('Categoria', with: '')
+        fill_in('Descrição', with: '')
         click_on 'Enviar'
 
         expect(page).to have_content('Não foi possível atualizar o modelo de produto.')
@@ -87,11 +90,11 @@ describe 'Usuário edita um modelo de produto' do
         expect(page).to have_content('Peso não pode ficar em branco')
         expect(page).to have_content('Largura não pode ficar em branco')
         expect(page).to have_content('Altura não pode ficar em branco')
+        expect(page).to have_content('Categoria não pode ficar em branco')
+        expect(page).to have_content('Descrição não pode ficar em branco')
         expect(page).to have_content('Peso não é um número')
         expect(page).to have_content('Largura não é um número')
         expect(page).to have_content('Altura não é um número')
         expect(page).to have_content('Profundidade não é um número')
-        expect(page).to have_content('Código de identificação não pode ficar em branco')
-        expect(page).to have_content('Código de identificação não possui o tamanho esperado (20 caracteres)')
     end
 end

@@ -40,7 +40,7 @@ class ProductModelsController < ApplicationController
     end
 
     def product_model_params
-        params.require(:product_model).permit(:name, :weight, :width, :height, :depth,
-                                            :sku, :supplier_id)
+        params.require(:product_model).permit(:name, :weight, :width, :height, :depth, :category,
+                                            :identifier, :description, :supplier_id)
     end
 end

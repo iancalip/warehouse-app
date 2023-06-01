@@ -16,7 +16,6 @@ describe 'Usuŕario cadastra um modelo de produto' do
         expect(page).to have_field('Largura')
         expect(page).to have_field('Altura')
         expect(page).to have_field('Profundidade')
-        expect(page).to have_field('Código de identificação')
         expect(page).to have_field('Fornecedor')
         expect(page).to have_content('Novo Modelo de Produto')
     end
@@ -37,14 +36,15 @@ describe 'Usuŕario cadastra um modelo de produto' do
         fill_in('Largura', with: '70')
         fill_in('Altura', with: '45')
         fill_in('Profundidade', with: '10')
-        fill_in('Código de identificação', with: 'TV32-SAMSU-XPTO91000')
+        fill_in('Categoria', with: 'categoria')
+        fill_in('Descrição', with: 'descrição')
         select 'Samsung', from: 'Fornecedor'
         click_on 'Enviar'
 
         #Assert
         expect(current_path).to eq product_models_path
         expect(page).to have_content 'TV 33'
-        expect(page).to have_content 'TV32-SAMSU-XPTO91000'
+        expect(page).to have_content "#{ProductModel.last.identifier}"
         expect(page).to have_content 'Samsung'
         expect(page).to have_content 'Modelo de produto cadastrado com sucesso.'
     end
@@ -63,7 +63,8 @@ describe 'Usuŕario cadastra um modelo de produto' do
         fill_in('Largura', with: '')
         fill_in('Altura', with: '')
         fill_in('Profundidade', with: '')
-        fill_in('Código de identificação', with: '')
+        fill_in('Categoria', with: '')
+        fill_in('Descrição', with: '')
         click_on 'Enviar'
 
         #Assert
@@ -72,12 +73,12 @@ describe 'Usuŕario cadastra um modelo de produto' do
         expect(page).to have_content('Peso não pode ficar em branco')
         expect(page).to have_content('Largura não pode ficar em branco')
         expect(page).to have_content('Altura não pode ficar em branco')
+        expect(page).to have_content('Categoria não pode ficar em branco')
+        expect(page).to have_content('Descrição não pode ficar em branco')
         expect(page).to have_content('Peso não é um número')
         expect(page).to have_content('Largura não é um número')
         expect(page).to have_content('Altura não é um número')
         expect(page).to have_content('Profundidade não é um número')
-        expect(page).to have_content('Código de identificação não pode ficar em branco')
-        expect(page).to have_content('Código de identificação não possui o tamanho esperado (20 caracteres)')
     end
 
     it 'com 0 nas dimensões' do

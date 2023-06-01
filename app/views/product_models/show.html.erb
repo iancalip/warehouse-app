@@ -3,6 +3,8 @@
 <div>
 <strong>Peso:</strong> <%= @product_model.weight%>g<br>
 <strong>Dimensão:</strong> <%= @product_model.height %>cm x <%= @product_model.width%>cm x <%= @product_model.depth %>cm <br>
-<strong>Código de identificação: </strong><%= @product_model.sku %><br>
+<strong>Identificador: </strong><%= @product_model.identifier %><br>
 <strong>Fornecedor: </strong><%= @product_model.supplier.brand_name%><br>
+<strong>Categoria: </strong><%= @product_model.category%><br>
+<strong>Descrição: </strong><%= @product_model.description%><br>
 </div>
